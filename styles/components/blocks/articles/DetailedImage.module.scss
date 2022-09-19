@@ -1,0 +1,39 @@
+@use '../../../abstracts' as a;
+
+.detailed-image {
+  @include a.responsive-top-margins(2.5rem, 4rem);
+
+  & > * {
+    @extend %set-content-max-width-sm;
+  }
+
+  & h2 {
+    @include a.responsive-bottom-margins(1rem, 1.125rem);
+    @include a.responsive-font-sizes(1.5rem, 1.875rem, 1, 1);
+    font-family: 'montserrat-extra-bold';
+  }
+
+  & .image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 2 / 1;
+
+  }
+
+  & .image {
+    //display: flex;
+    //justify-content: center;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+  
+  & .caption {
+    @include a.responsive-top-margins(0.5rem, 1rem);
+    @include a.responsive-font-sizes(0.85rem, 1.0625rem, 1.7, 1.7);
+    margin-bottom: 0;
+    color: a.$text-primary-faded;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+}

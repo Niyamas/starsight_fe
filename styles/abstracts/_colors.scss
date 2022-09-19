@@ -1,0 +1,37 @@
+/*
+    List of All Colors
+    (sorted using: https://elektrobild.org/tools/sort-colors)
+*/
+$white: #FFFFFF;
+$cultured: #F5F5F5;
+$fluorescent-blue: #5DE4E4;
+$maximum-blue-green: #4FC0C0;
+$jet: #30323F;
+$rich-black-fogra-39 :#040405;
+
+// Remove
+$picotee-blue: #212684;
+$blue-crayola: #2176FF;
+$accordion-title-highlight: $blue-crayola;
+
+// Mapped Colors
+$bg-light: $white;
+$bg-dark: $jet;
+//$bg-primary: $midnight-blue;
+
+$text-primary: $rich-black-fogra-39;
+$text-primary-highlight: $maximum-blue-green;
+$text-primary-highlight-hover: $fluorescent-blue;
+$text-primary-faded: rgba($rich-black-fogra-39, 0.75);
+$text-primary-ephemeral: rgba($rich-black-fogra-39, 0.45);
+$text-light: $white;
+
+$scrollbar: $maximum-blue-green;
+$scrollbar-background: $white;
+
+$border-gray: rgba($rich-black-fogra-39, 0.35);
+ 
+$image-shadow: 9px 20px 36px -7px rgba($rich-black-fogra-39, 0.4);
+$hero-image-filter: rgba($rich-black-fogra-39, 0.3);
+$banner-image-filter: rgba($rich-black-fogra-39, 0.5);
+$hero-text-shadow: 1px 1px 1px rgba($rich-black-fogra-39, 0.25);

@@ -1,0 +1,26 @@
+@use '../abstracts' as a;
+
+.no-select {
+	//https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting
+	-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Safari */
+			-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+					user-select: none; /* Non-prefixed version, currentlysupported by Chrome, Edge, Opera and Firefox */
+
+					// https://stackoverflow.com/questions/7018324/how-to-stop-highlighting-of-a-div-element-when-double-clicking
+					-o-user-select: none;
+}
+
+.image-wrapper {
+	@extend %set-image-max-width;
+}
+
+.image-blur {
+	transition: filter a.$image-onload-blur-duration a.$ease-out-quart;
+
+	&.blur {
+		filter: blur(20px);
+	}
+}

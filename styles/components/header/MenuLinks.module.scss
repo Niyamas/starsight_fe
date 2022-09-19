@@ -1,0 +1,57 @@
+@use '../../abstracts' as a;
+
+.menu-links {
+  margin-bottom: 0;
+  display: flex;
+  column-gap: 3rem;
+
+  & .link {
+    margin-bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  & .link-text {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'montserrat-regular';
+    font-size: 1.25rem;
+    letter-spacing: 0.0625rem;
+    color: a.$text-light;
+    transition: color a.$text-hover-duration a.$ease-out-expo;
+
+    &::after {
+      position: absolute;
+      bottom: 1.07rem;
+      left: 0;
+      content: '';
+      width: 0%;
+      height: 2px;
+      background-color: a.$text-light;
+      transition:
+        width a.$text-hover-duration a.$ease-out-expo,
+        background-color a.$text-hover-duration a.$ease-out-expo;
+      will-change: width;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &.active::after {
+			width: 100%;
+		}
+
+    &.darken {
+      color: a.$text-primary;
+
+      &::after {
+        background-color: a.$text-primary;
+      }
+    }
+  }
+}

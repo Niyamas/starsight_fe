@@ -1,0 +1,59 @@
+@use '../../abstracts' as a;
+
+
+.rich-text {
+  @extend %component-spacing;
+
+  & .content {
+    @extend %set-content-max-width-lg;
+    columns: 1;
+
+    @include a.min-width('lg') {
+      column-gap: 7rem;
+      columns: 2;
+    }
+
+    @include a.min-width('4k') {
+      column-gap: 10rem;
+    }
+  }
+
+  & ul,
+  & ol {
+    page-break-inside: avoid; /* For Firefox. */
+    -webkit-column-break-inside: avoid; /* For Chrome & friends. */
+    break-inside: avoid; /* For standard browsers like IE. :-) */
+  }
+
+  & ul {
+    margin: 0 0 1rem 2.75rem;
+
+    & li {
+      list-style: disc;
+  
+      &::marker {
+        color: a.$text-primary-highlight;
+      }
+    }  
+  }
+
+  & ol {
+    margin: 0 0 1rem 2.75rem;
+
+    & li {
+      list-style: decimal;
+    }
+  }
+
+  & li {
+    @include a.responsive-font-sizes(1.0625rem, 1.125rem, 1.6, 1.75);
+    margin-bottom: 0.75rem;
+    font-family: 'montserrat-regular';
+    letter-spacing: 0.75px;
+    color: a.$text-primary;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

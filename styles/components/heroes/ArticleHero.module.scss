@@ -1,0 +1,23 @@
+@use '../../abstracts' as a;
+
+.article-hero {
+  @extend %move-hero-up;
+  position: relative;
+  height: calc( 400px + #{a.$primary-nav-height} );
+
+  @include a.min-width('md') {
+    height: calc( 600px + #{a.$primary-nav-height} );
+  }
+
+  & .image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .image {
+    object-fit: cover;
+  }
+}

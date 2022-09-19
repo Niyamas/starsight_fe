@@ -1,0 +1,14 @@
+// Functions
+$ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+// Durations
+$button-hover-duration: 0.5s;
+
+$image-onload-blur-duration: 0.5s;
+$image-fade-in-out-duration: 2s;
+
+$mobile-menu-transition-duration: 0.5s;
+
+$text-hover-duration: 0.5s;

@@ -1,0 +1,239 @@
+@use 'breakpoints' as b;
+@use 'transitions' as t;
+
+
+@mixin min-width($breakpoint) {
+	/*
+		Min-width media breakpoint. Select from a dictionary of
+		breakpoints as defined in breakpoints.scss.
+		Example: @include min-width('md');
+	*/
+	
+	@if map-has-key($map: b.$custom-breakpoints, $key: $breakpoint) {
+
+		@media (min-width: map-get(b.$custom-breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	@else {
+		@warn "No breakpoint value for key `#{$breakpoint}`. Available breakpoints are: #{map-keys(b.$custom-breakpoints)}.";
+	}
+}
+
+@mixin max-width($breakpoint) {
+		/*
+			Max-width media breakpoint. Select from a dictionary of
+			breakpoints as defined in breakpoints.scss.
+			Example: @include max-width('md');
+		*/
+	
+	@if map-has-key($map: b.$custom-breakpoints, $key: $breakpoint) {
+
+		@media (max-width: map-get(b.$custom-breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	@else {
+		@warn "No breakpoint value for key `#{$breakpoint}`. Available breakpoints are: #{map-keys(b.$custom-breakpoints)}.";
+	}
+}
+
+
+@mixin hoverTransitions($time, $properties...) {
+  $transition: ();
+  @each $property in $properties {
+    $transition: append(
+        $transition, ($property $time cubic-bezier(.42, 0, .58, 1)), $separator: comma
+    );
+  }
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin responsive-font-sizes($small-font-size, $large-font-size, $small-line-height, $large-line-height ) {
+	// @todo: add 4k options
+
+	font-size: $small-font-size;
+	line-height: $small-line-height;
+
+	@include min-width('sm') {
+		font-size: calc( #{$small-font-size} + (#{$large-font-size - $small-font-size}/5) );
+		line-height: if($small-line-height == $large-line-height, $large-line-height, calc( #{$small-line-height} + (#{$large-line-height - $small-line-height}/5) ))
+	}
+
+	@include min-width('md') {
+		font-size: calc( #{$small-font-size} + (#{$large-font-size - $small-font-size}*2/5) );
+		line-height: if($small-line-height == $large-line-height, $large-line-height, calc( #{$small-line-height} + (#{$large-line-height - $small-line-height}2/5) ))
+	}
+
+	@include min-width('lg') {
+		font-size: calc( #{$small-font-size} + (#{$large-font-size - $small-font-size}*3/5) );
+		line-height: if($small-line-height == $large-line-height, $large-line-height, calc( #{$small-line-height} + (#{$large-line-height - $small-line-height}3/5) ))
+	}
+
+	@include min-width('xl') {
+		font-size: calc( #{$small-font-size} + (#{$large-font-size - $small-font-size}*4/5) );
+		line-height: if($small-line-height == $large-line-height, $large-line-height, calc( #{$small-line-height} + (#{$large-line-height - $small-line-height}4/5) ))
+	}
+
+	@include min-width('xxl') {
+		font-size: $large-font-size;
+		line-height: $large-line-height;
+	}
+}
+
+@mixin responsive-bottom-margins($smallest, $largest) {
+	margin-bottom: $smallest;
+
+	@include min-width('sm') {
+		margin-bottom: calc( #{$smallest} + (#{$largest - $smallest}/5) );
+	}
+
+	@include min-width('md') {
+		margin-bottom: calc( #{$smallest} + (#{$largest - $smallest}*2/5) );
+	}
+
+	@include min-width('lg') {
+		margin-bottom: calc( #{$smallest} + (#{$largest - $smallest}*3/5) );
+	}
+
+	@include min-width('xl') {
+		margin-bottom: calc( #{$smallest} + (#{$largest - $smallest}*4/5) );
+	}
+
+	@include min-width('xxl') {
+		margin-bottom: $largest;
+	}
+}
+
+@mixin responsive-top-margins($smallest, $largest) {
+	margin-top: $smallest;
+
+	@include min-width('sm') {
+		margin-top: calc( #{$smallest} + (#{$largest - $smallest}/5) );
+	}
+
+	@include min-width('md') {
+		margin-top: calc( #{$smallest} + (#{$largest - $smallest}*2/5) );
+	}
+
+	@include min-width('lg') {
+		margin-top: calc( #{$smallest} + (#{$largest - $smallest}*3/5) );
+	}
+
+	@include min-width('xl') {
+		margin-top: calc( #{$smallest} + (#{$largest - $smallest}*4/5) );
+	}
+
+	@include min-width('xxl') {
+		margin-top: $largest;
+	}
+}
+
+@mixin responsive-button-padding($small-y, $small-x, $large-y, $large-x) {
+	padding: $small-y $small-x;
+
+	@include min-width('sm') {
+		padding: calc( #{$small-y} + (#{$large-y - $small-y}/5) ) calc( #{$small-x} + (#{$large-x - $small-x}/5) );
+	}
+
+	@include min-width('md') {
+		padding: calc( #{$small-y} + (#{$large-y - $small-y}*2/5) ) calc( #{$small-x} + (#{$large-x - $small-x}*2/5) );
+	}
+
+	@include min-width('lg') {
+		padding: calc( #{$small-y} + (#{$large-y - $small-y}*3/5) ) calc( #{$small-x} + (#{$large-x - $small-x}*3/5) );
+	}
+
+	@include min-width('xl') {
+		padding: calc( #{$small-y} + (#{$large-y - $small-y}*4/5) ) calc( #{$small-x} + (#{$large-x - $small-x}*4/5) );
+	}
+
+	@include min-width('xxl') {
+		padding: $large-y $large-x;
+	}
+}
+
+@mixin btn-pill($color, $color-hover, $background-color, $background-color-hover, $size) {
+	/*
+		@todo: Add responsive styling
+	*/
+	
+	@if $color and $color-hover and $background-color and $background-color-hover {
+		@if $size == 'small' {
+			padding: 0.4rem 2rem;
+		}
+		@else if $size == 'large' {
+			@include responsive-button-padding(0.55rem, 2rem, 0.65rem, 2.625rem);
+		}
+		@else {
+			padding: 0.4rem 2rem;
+		}
+		display: inline-block;
+		background-color: $background-color;
+		outline: if($background-color == transparent, 2px solid $color, none);
+		text-decoration: none;
+		border-radius: 20px;
+		cursor: pointer;
+		transition: background-color t.$button-hover-duration t.$ease-out-expo;
+
+		&:hover {
+			background-color: $background-color-hover;
+		}
+
+		@if $color-hover != none {
+			&:hover span {
+				color: $color-hover;
+			}
+		}
+
+		& > * {
+			@if $size == 'small' {
+				@include responsive-font-sizes(0.9rem, 0.941rem, 1rem, 1.05rem);
+			}
+			@else if $size == 'large' {
+				@include responsive-font-sizes(1rem, 1.25rem, 1rem, 1.05rem);
+			}
+			@else {
+				@include responsive-font-sizes(0.9rem, 0.941rem, 1rem, 1.05rem);
+			}
+			font-family: 'open-sans-semibold';
+			letter-spacing: 0.09375rem;
+			color: $color;
+
+			@if $color-hover != none {
+				transition: color t.$button-hover-duration t.$ease-out-expo;
+			}
+		}
+	}
+
+	@else {
+		@error "No compatible style. Please check your syntax -> @include btn-pill($color, $color-hover, $background-color, $background-color-hover)."
+	}
+};
+
+@mixin centered() {
+	/*
+		Used to perfect center elements with
+		respect to its closest parent element
+		with "position: relative".
+	*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin link-colors($link, $visited, $hover, $active) {
+	/*
+		Update link colors and their various states by
+		passing 4 color values to this mixin.
+	*/
+  color: $link;
+  &:visited  { color: $visited; }
+  &:hover    { color: $hover;   }
+  &:active   { color: $active;  }
+}

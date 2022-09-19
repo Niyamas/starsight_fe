@@ -1,0 +1,78 @@
+@use '../../abstracts' as a;
+
+.home-hero {
+  @extend %move-hero-up;
+  position: relative;
+  height: calc( 400px + #{a.$primary-nav-height} );
+
+  @include a.min-width('md') {
+    height: calc( 600px + #{a.$primary-nav-height} );
+  }
+
+  & .image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .image {
+    object-fit: cover;
+  }
+
+  & .text-left {
+    @include a.responsive-font-sizes(1rem, 1.47rem, 1.95, 1.95);
+    position: absolute;
+    padding: 0 a.$side-spacing-mobile;
+    top: 30%;
+    width: 80%;
+    font-family: 'montserrat-regular';
+    color: a.$text-light;
+    letter-spacing: 3px;
+    line-height: 1.95;
+
+    @include a.min-width('md') {
+      padding: 0 a.$side-spacing-tablet;
+      width: 100%;
+    }
+
+    @include a.min-width('lg') {
+      top: 35%;
+    }
+
+    @include a.min-width('xl') {
+      padding: 0 a.$side-spacing-desktop;
+      letter-spacing: 4px;
+    }
+  }
+
+  & .text-right {
+    @include a.responsive-font-sizes(2rem, 4.12rem, 1.5, 1.5);
+    position: absolute;
+    right: a.$side-spacing-mobile;
+    top: 65%;
+    font-family: 'montserrat-bold';
+    line-height: 1.5;
+    letter-spacing: 7px;
+    color: a.$text-light;
+
+    @include a.min-width('md') {
+      right: calc( #{a.$side-spacing-tablet} + 3vw );
+      letter-spacing: 12px;
+    }
+
+    @include a.min-width('md') {
+      top: 60%;
+    }
+
+    @include a.min-width('lg') {
+      top: 55%;
+    }
+
+    @include a.min-width('xl') {
+      top: 50%;
+      right: calc( #{a.$side-spacing-desktop} + 3vw );
+    }
+  }
+}

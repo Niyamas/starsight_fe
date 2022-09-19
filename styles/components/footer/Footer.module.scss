@@ -1,0 +1,54 @@
+@use '../../abstracts' as a;
+
+.footer {
+  @extend %component-spacing-top-only;
+  padding: 120px a.$side-spacing-mobile;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 3rem;
+  background-color: a.$bg-dark;
+
+  @include a.min-width('md') {
+    padding: 135px a.$side-spacing-tablet;
+  }
+
+  @include a.min-width('xl') {
+    padding: 150px a.$side-spacing-desktop;
+  }
+
+  ul {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    padding: 0 1rem;
+    color: a.$text-light;
+  }
+
+  & .logo {
+    font-family: 'montserrat-regular';
+    font-size: 2rem;
+    letter-spacing: 0.3125rem;
+    transition: color a.$text-hover-duration a.$ease-out-expo;
+
+    @include a.min-width('lg') {
+      font-size: 2.5rem;
+    }
+  }
+
+  & .link-text {
+    font-family: 'montserrat-regular';
+    font-size: 1.25rem;
+    letter-spacing: 0.0625rem;
+  }
+}

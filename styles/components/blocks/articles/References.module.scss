@@ -1,0 +1,26 @@
+@use '../../../abstracts' as a;
+
+.references {
+  @include a.responsive-top-margins(2.5rem, 4rem);
+
+  & > * {
+    @extend %set-content-max-width-sm;
+  }
+
+  & a {
+    overflow-wrap: break-word;
+  }
+
+  & ol {
+    padding: 0 0 1.5rem 1.5rem;
+
+    &:has(a) > li {
+      color: a.$text-primary-highlight;
+      transition: color a.$text-hover-duration a.$ease-out-expo;
+  
+      &:hover {
+        color: a.$text-primary-highlight-hover !important;
+      }
+    }
+  }
+}

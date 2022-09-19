@@ -1,0 +1,15 @@
+// Default bootstrap breakpoints
+$breakpoints : (
+	'xs': 0,
+	'sm': 576px,
+	'md': 768px,
+	'lg': 992px,
+	'xl': 1200px,
+	'xxl': 1400px
+) !default;
+
+// Add extra breakpoints here if needed.
+$extra-breakpoints: ('header': 1293px, 'max-width': 1580px, 'mobile': 454px, '4k': 2000px);
+
+// Merge breakpoint dictionaries above into a single dicitonary (see mixins.scss for usage).
+$custom-breakpoints: map-merge($extra-breakpoints, $breakpoints);

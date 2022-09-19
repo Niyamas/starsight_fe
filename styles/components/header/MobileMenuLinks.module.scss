@@ -1,0 +1,166 @@
+@use '../../abstracts' as a;
+
+.mobile-menu-links {
+  @extend %scrollbar-style;
+  position: absolute;
+  z-index: 7;
+  top: a.$primary-nav-height;
+  left: 0;
+  padding: 5vh a.$side-spacing-mobile;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: calc( 100vh - #{a.$primary-nav-height} );
+  background-color: a.$bg-light;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity a.$mobile-menu-transition-duration a.$ease-out-expo;
+  
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  & ul {
+    margin: 0;
+    width: min(100%, 600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & .link {
+    width: 100%;
+    height: 60px;
+    min-height: 50px;
+    max-width: 400px;
+    list-style: none;
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    &:nth-child(1).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.55s a.$ease-out-expo,
+        transform 1.25s 0.55s a.$ease-out-quart;
+    }
+
+    &:nth-child(2).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.6s a.$ease-out-expo,
+        transform 1.25s 0.6s a.$ease-out-quart;
+    }
+
+    &:nth-child(3).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.65s a.$ease-out-expo,
+        transform 1.25s 0.65s a.$ease-out-quart;
+    }
+
+    &:nth-child(4).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.7s a.$ease-out-expo,
+        transform 1.25s 0.7s a.$ease-out-quart;
+    }
+
+    &:nth-child(5).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.75s a.$ease-out-expo,
+        transform 1.25s 0.75s a.$ease-out-quart;
+    }
+
+    &:nth-child(6).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.8s a.$ease-out-expo,
+        transform 1.25s 0.8s a.$ease-out-quart;
+    }
+
+    &:nth-child(7).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.85s a.$ease-out-expo,
+        transform 1.25s 0.85s a.$ease-out-quart;
+    }
+
+    &:nth-child(8).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.9s a.$ease-out-expo,
+        transform 1.25s 0.9s a.$ease-out-quart;
+    }
+
+    &:nth-child(9).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 0.95s a.$ease-out-expo,
+        transform 1.25s 0.95s a.$ease-out-quart;
+    }
+
+    &:nth-child(10).open {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 2.5s 1s a.$ease-out-expo,
+        transform 1.25s 1s a.$ease-out-quart;
+    }
+  }
+
+  & a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'montserrat-regular';
+    font-size: 1.25rem;
+    letter-spacing: 0.0625rem;
+    color: a.$text-primary;
+    transition: color a.$text-hover-duration a.$ease-out-expo;
+
+    &:hover span::after {
+      width: 100%;
+    }
+
+    &.active span::after {
+      width: 100%;
+    }
+  }
+
+  & span {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    &::after {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0;
+      content: '';
+      width: 0%;
+      height: 2px;
+      background-color: a.$text-primary;
+      transition:
+        width a.$text-hover-duration a.$ease-out-expo,
+        background-color a.$text-hover-duration a.$ease-out-expo;
+      will-change: width;
+    }
+  }
+}

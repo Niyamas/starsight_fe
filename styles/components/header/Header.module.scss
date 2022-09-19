@@ -1,0 +1,80 @@
+@use '../../abstracts' as a;
+
+$ham-house-side-spacing: 10px;
+$ham-house-side-spacing-sm: 7px;
+
+.header {
+  position: sticky;
+  //position: -webkit-sticky;
+  z-index: 7;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 calc( #{a.$side-spacing-mobile} - #{$ham-house-side-spacing-sm} ) 0 a.$side-spacing-mobile;
+  height: a.$primary-nav-height;
+
+  @include a.min-width(sm) {
+    padding: 0 calc( #{a.$side-spacing-mobile} - #{$ham-house-side-spacing} ) 0 a.$side-spacing-mobile;
+  }
+
+  @include a.min-width(md) {
+    padding: 0 calc( #{a.$side-spacing-tablet} - #{$ham-house-side-spacing} ) 0 a.$side-spacing-tablet;
+  }
+
+  @include a.min-width(xl) {
+    padding: 0 calc( #{a.$side-spacing-desktop} - #{$ham-house-side-spacing} ) 0 a.$side-spacing-desktop;
+  }
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: a.$primary-nav-height;
+    background-color: a.$bg-light;
+    opacity: 0;
+    transition: opacity a.$mobile-menu-transition-duration a.$ease-out-expo;
+    will-change: opacity;
+  }
+
+  &.fill:after {
+    opacity: 1;
+  }
+
+  & .content {
+    @extend %set-content-max-width-lg;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  & .logo {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-family: 'montserrat-regular';
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.3125rem;
+
+    color: a.$text-light;
+
+    @include a.min-width(sm) {
+      font-size: 1.76rem;
+    }
+
+    &.darken {
+      color: a.$text-primary;
+    }
+  }
+
+  & .ham-house-wrapper {
+    margin-left: auto;
+    padding: 0 $ham-house-side-spacing;
+    //border: 1px solid brown;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,179 @@
+@use './colors' as c;
+@use './mixins' as m;
+@use './spacings' as s;
+
+%scrollbar-style {
+	// For firefox scrollbar styling
+	scrollbar-color: c.$scrollbar c.$scrollbar-background;
+	scrollbar-width: thin !important;
+
+	// For other browsers scrollbar styling
+	&::-webkit-scrollbar {
+		width: 0.6rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: c.$scrollbar-background;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: c.$scrollbar;
+	}
+}
+
+%move-hero-up {
+	margin-top: calc( -#{s.$primary-nav-height} );
+  padding-top: s.$primary-nav-height;
+}
+
+%component-spacing {
+	margin: s.$component-top-bottom-spacing-mobile s.$side-spacing-mobile 0 s.$side-spacing-mobile;
+
+  @include m.min-width('md') {
+    margin: s.$component-top-bottom-spacing-tablet s.$side-spacing-tablet 0 s.$side-spacing-tablet;
+  }
+
+  @include m.min-width('xl') {
+    margin: s.$component-top-bottom-spacing-desktop s.$side-spacing-desktop 0 s.$side-spacing-desktop;
+  }
+
+  @include m.min-width('4k') {
+    margin: s.$component-top-bottom-spacing-4k s.$side-spacing-desktop 0 s.$side-spacing-desktop;
+  }
+}
+
+%component-spacing-top-only {
+	margin-top: s.$component-top-bottom-spacing-mobile;
+
+  @include m.min-width('md') {
+    margin-top: s.$component-top-bottom-spacing-tablet;
+  }
+
+  @include m.min-width('xl') {
+    margin-top: s.$component-top-bottom-spacing-desktop;
+  }
+
+  @include m.min-width('4k') {
+    margin-top: s.$component-top-bottom-spacing-4k;
+  }
+}
+
+%banner-inner-component-spacing {
+  padding: s.$component-top-bottom-spacing-mobile s.$side-spacing-mobile;
+
+  @include m.min-width('md') {
+    padding: s.$component-top-bottom-spacing-tablet s.$side-spacing-tablet;
+  }
+
+  @include m.min-width('xl') {
+    padding: s.$component-top-bottom-spacing-desktop s.$side-spacing-desktop;
+  }
+
+  @include m.min-width('4k') {
+    padding: s.$component-top-bottom-spacing-4k s.$side-spacing-desktop;
+  }
+}
+
+%position-absolute-spacing {
+	margin: 0 s.$side-spacing-mobile;
+
+  @include m.min-width('md') {
+    margin: 0 s.$side-spacing-tablet;
+  }
+
+  @include m.min-width('xl') {
+    margin: 0 s.$side-spacing-desktop;
+  }
+}
+
+%set-content-max-sm {
+	margin-left: auto;
+	margin-right: auto;
+	width: min(100%, 1440px);
+}
+
+%set-content-max-width-sm {
+	margin-left: auto;
+	margin-right: auto;
+	//width: min(100%, 1440px);
+  //width: 100%;
+  width: min(100%, 900px);
+
+ /*  @include m.min-width('sm') {
+
+	}
+
+  @include m.min-width('md') {
+
+	}
+
+  @include m.min-width('lg') {
+
+	}
+
+  @include m.min-width('xl') {
+		
+	}
+
+  @include m.min-width('xxl') {
+
+	}
+
+  @include m.min-width('4k') {
+		width: min(100%, 900px);
+	} */
+}
+
+%set-content-max-width-lg {
+	margin-left: auto;
+	margin-right: auto;
+	//width: min(100%, 1440px);
+  width: 100%;
+
+  @include m.min-width('sm') {
+
+	}
+
+  @include m.min-width('md') {
+
+	}
+
+  @include m.min-width('lg') {
+
+	}
+
+  @include m.min-width('xl') {
+		
+	}
+
+  @include m.min-width('xxl') {
+
+	}
+
+  @include m.min-width('4k') {
+		width: min(100%, 1920px);
+	}
+}
+
+%set-image-max-width {
+	margin: 0 auto;
+	width: min(100%, 1440px);
+}
+
+%enable-word-break {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}

@@ -1,0 +1,16 @@
+@use '../../abstracts' as a;
+
+.loading-spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: a.$picotee-blue rgba(a.$picotee-blue, 0.1) rgba(a.$picotee-blue, 0.1);
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
